@@ -6,7 +6,7 @@ public class Length {
 
     private final String FT = "ft";
     private final String INCH = "inch";
-    private final int FT_TO_INCH = 12;
+    private static final int FT_TO_INCH = 12;
     private final int value;
     private final String unit;
     
@@ -38,7 +38,7 @@ public class Length {
         }
     }
 
-    public int convertFeetToInch(int value) {
+    public static int convertFeetToInch(int value) {
         return value * FT_TO_INCH;
     }
 

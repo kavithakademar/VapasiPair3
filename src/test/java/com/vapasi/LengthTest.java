@@ -55,8 +55,7 @@ public class LengthTest {
 
     @Test
     public void shoudReturnInchValueForFeet()   {
-        Length length = new Length(5, "ft");
-        int actualValue = length.convertFeetToInch(5);
+        int actualValue = Length.convertFeetToInch(5);
         int expectedValue = 60;
         assertEquals(expectedValue, actualValue);
     }
