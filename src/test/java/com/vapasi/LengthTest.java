@@ -35,6 +35,10 @@ public class LengthTest {
         Length length3 = new Length(5, feet);
         Length length4 = new Length(10, feet);
         assertNotEquals(length3, length4);
+        Length length5 = new Length(5, cm);
+        Length length6 = new Length(10, cm);
+        assertNotEquals(length5, length6);
+
     }
 
     @Test
@@ -45,6 +49,13 @@ public class LengthTest {
         Length length3 = new Length(36, inch);
         Length length4 = new Length(3, feet);
         assertEquals(length3, length4);
+        Length length5 = new Length(2, inch);
+        Length length6 = new Length(5, cm);
+        assertEquals(length5, length6);
+        Length length7 = new Length(10, cm);
+        Length length8 = new Length(4, inch);
+        assertEquals(length7, length8);
+
     }
 
     @Test
@@ -55,6 +66,12 @@ public class LengthTest {
         Length length3 = new Length(40, inch);
         Length length4 = new Length(3, feet);
         assertNotEquals(length3, length4);
+        Length length5 = new Length(2, inch);
+        Length length6 = new Length(10, cm);
+        assertNotEquals(length5, length6);
+        Length length7 = new Length(8, cm);
+        Length length8 = new Length(4, inch);
+        assertNotEquals(length7, length8);
     }
 
 }
