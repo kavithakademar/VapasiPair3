@@ -4,6 +4,9 @@ import java.util.Objects;
 
 public class Length {
 
+    private final String FT = "ft";
+    private final String INCH = "inch";
+    private final int FT_TO_INCH = 12;
     private final int value;
     private final String unit;
     
@@ -11,6 +14,7 @@ public class Length {
         this.value = value;
         this.unit = unit;
     }
+
 
     @Override
     public boolean equals(Object that) {
@@ -21,15 +25,21 @@ public class Length {
             if (value == length.value)
                 return true;
                 return false;
-        }else {
-           int unitInInches =  convertFeetToInch(length.value);
         }
-        return value == length.value &&
-                Objects.equals(unit, length.unit);
+        else {
+            if(unit.equalsIgnoreCase(FT)) {
+                if (convertFeetToInch(value) == length.value) return true;
+                return false;
+            }
+            else    {
+                if(convertFeetToInch(length.value) == value) return true;
+                return false;
+            }
+        }
     }
 
-    private int convertFeetToInch(int value) {
-        return 0;
+    public int convertFeetToInch(int value) {
+        return value * FT_TO_INCH;
     }
 
 }
