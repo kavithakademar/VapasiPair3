@@ -10,7 +10,7 @@ public class Metrics {
     private final double INCH_TO_FEET = 1/FEET_TO_INCH;
     private final double CM_TO_INCH = 1/INCH_TO_CM;
     private final double NO_CONVERSION = 1;
-    private final double INVALID_CONVERSION = 0;
+    private final double INVALID = 0;
     private final String FEET = "ft";
     private final String INCH = "inch";
     private final String CM = "cm";
@@ -30,7 +30,7 @@ public class Metrics {
             return INCH_TO_FEET;
         if (unit == CM && toUnit.unit == INCH)
             return CM_TO_INCH;
-        return INVALID_CONVERSION;
+        return INVALID;
     }
 
     @Override
