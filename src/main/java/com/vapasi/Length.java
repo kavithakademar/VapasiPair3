@@ -17,6 +17,10 @@ public class Length {
         if (this == that) return true;
         if (that == null || getClass() != that.getClass()) return false;
         Length length = (Length) that;
-        return length.value == unit.conversionFactor(length.unit)*value;
+        return convertToBaseUnit(this) == convertToBaseUnit(length);
+    }
+
+    private double convertToBaseUnit(Length length) {
+        return length.value * length.unit.standardConverterToBase();
     }
 }

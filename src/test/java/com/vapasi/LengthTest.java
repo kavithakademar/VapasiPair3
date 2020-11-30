@@ -16,9 +16,9 @@ public class LengthTest {
 
     @BeforeEach
     public void setup(){
-        feet = new Metrics("ft");
-        inch = new Metrics("inch");
-        cm = new Metrics("cm");
+        feet = Metrics.createFeetMetrics();
+        inch = Metrics.createInchMetrics();
+        cm = Metrics.createCentimeterMetrics();
     }
 
     @Test

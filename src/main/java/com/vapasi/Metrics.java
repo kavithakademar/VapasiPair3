@@ -4,39 +4,37 @@ import java.util.Objects;
 
 public class Metrics {
     
-    private final String unit;
-    private final double FEET_TO_INCH = 12;
-    private final double INCH_TO_CM = 2.5;
-    private final double INCH_TO_FEET = 1/FEET_TO_INCH;
-    private final double CM_TO_INCH = 1/INCH_TO_CM;
-    private final double NO_CONVERSION = 1;
-    private final double INVALID = 0;
-    private final String FEET = "ft";
-    private final String INCH = "inch";
-    private final String CM = "cm";
+    private static final double FEET_TO_BASE = 30;
+    private static final double INCH_TO_BASE = 2.5;
+    private static final double CM_TO_BASE = 1;
+    private static Metrics feetMetrics;
+    private static Metrics inchMetrics;
+    private static Metrics centimeterMetrics;
+    private double standardConverter;
 
-    public Metrics(String unit) {
-        this.unit = unit;
+    private Metrics(double standardConverter)    {
+        this.standardConverter = standardConverter;
+    }
+    public static Metrics createFeetMetrics()   {
+        if(feetMetrics == null)
+            feetMetrics = new Metrics(FEET_TO_BASE);
+        return feetMetrics;
     }
 
-    public double conversionFactor(Metrics toUnit){
-        if (unit == toUnit.unit)
-            return NO_CONVERSION;
-        if (unit == FEET && toUnit.unit == INCH)
-            return FEET_TO_INCH;
-        if(unit == INCH && toUnit.unit == CM)
-            return INCH_TO_CM;
-        if (unit == INCH && toUnit.unit == FEET)
-            return INCH_TO_FEET;
-        if (unit == CM && toUnit.unit == INCH)
-            return CM_TO_INCH;
-        return INVALID;
+    public static Metrics createInchMetrics()   {
+        if(inchMetrics == null)
+            inchMetrics = new Metrics(INCH_TO_BASE);
+        return inchMetrics;
     }
 
-    @Override
-    public String toString() {
-        return "Metrics{" +
-                "unit='" + unit + '\'' +
-                '}';
+    public static Metrics createCentimeterMetrics()   {
+        if(centimeterMetrics == null)
+            centimeterMetrics = new Metrics(CM_TO_BASE);
+        return centimeterMetrics;
     }
+
+    public double standardConverterToBase()  {
+        return standardConverter;
+    }
+
 }

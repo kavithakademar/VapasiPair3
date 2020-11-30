@@ -8,14 +8,13 @@ public class MetricsTest {
 
     @Test
     public void shouldReturnConversionFactor()  {
-        Metrics feet = new Metrics("ft");
-        Metrics inch = new Metrics("inch");
-        Metrics cm = new Metrics("cm");
+        Metrics feet = Metrics.createFeetMetrics();
+        Metrics inch = Metrics.createInchMetrics();
+        Metrics cm = Metrics.createCentimeterMetrics();
 
-        assertEquals(12, feet.conversionFactor(inch));
-        assertEquals(2.5, inch.conversionFactor(cm));
-        assertEquals(1/12.0, inch.conversionFactor(feet));
-        assertEquals(1/2.5, cm.conversionFactor(inch));
+        assertEquals(30, feet.standardConverterToBase());
+        assertEquals(2.5, inch.standardConverterToBase());
+        assertEquals(1, cm.standardConverterToBase());
 
 
     }
