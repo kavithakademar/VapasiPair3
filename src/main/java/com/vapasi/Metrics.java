@@ -10,7 +10,7 @@ public class Metrics {
     private final double INCH_TO_FEET = 1/FEET_TO_INCH;
     private final double CM_TO_INCH = 1/INCH_TO_CM;
     private final String FEET = "ft";
-    private final String INCH = "in";
+    private final String INCH = "inch";
     private final String CM = "cm";
 
     public Metrics(String unit) {
@@ -20,13 +20,13 @@ public class Metrics {
     public double conversionFactor(Metrics toUnit){
         if (toUnit.unit == this.unit)
             return 1;
-        if (toUnit.unit == FEET && this.unit == INCH)
+        if (unit == FEET && toUnit.unit == INCH)
             return FEET_TO_INCH;
-        if(toUnit.unit == INCH && this.unit == CM)
+        if(unit == INCH && toUnit.unit == CM)
             return INCH_TO_CM;
-        if (this.unit == INCH && toUnit.unit == FEET)
+        if (unit == INCH && toUnit.unit == FEET)
             return INCH_TO_FEET;
-        if (this.unit == CM && toUnit.unit == INCH)
+        if (unit == CM && toUnit.unit == INCH)
             return CM_TO_INCH;
         return 0;
     }
