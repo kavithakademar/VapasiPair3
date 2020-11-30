@@ -4,42 +4,23 @@ import java.util.Objects;
 
 public class Length {
 
-    private final String FT = "ft";
-    private final String INCH = "inch";
-    private static final int FT_TO_INCH = 12;
-    private final int value;
-    private final String unit;
+    private final double value;
+    private final Metrics unit;
     
-    public Length(int value, String unit)   {
+    public Length(double value, Metrics unit)   {
         this.value = value;
         this.unit = unit;
     }
-
 
     @Override
     public boolean equals(Object that) {
         if (this == that) return true;
         if (that == null || getClass() != that.getClass()) return false;
         Length length = (Length) that;
-        if (unit == length.unit) {
-            if (value == length.value)
-                return true;
-                return false;
-        }
-        else {
-            if(unit.equalsIgnoreCase(FT)) {
-                if (convertFeetToInch(value) == length.value) return true;
-                return false;
-            }
-            else    {
-                if(convertFeetToInch(length.value) == value) return true;
-                return false;
-            }
-        }
+        System.out.println(this.value);
+        System.out.println(this.unit.toString());
+        System.out.println(length.unit.toString());
+        System.out.println(this.unit.conversionFactor(length.unit));
+        return this.value == this.unit.conversionFactor(length.unit)*length.value;
     }
-
-    public static int convertFeetToInch(int value) {
-        return value * FT_TO_INCH;
-    }
-
 }
