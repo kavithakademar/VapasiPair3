@@ -7,34 +7,33 @@ public class Metrics {
     private static final double FEET_TO_BASE = 30;
     private static final double INCH_TO_BASE = 2.5;
     private static final double CM_TO_BASE = 1;
-    private static Metrics feetMetrics;
-    private static Metrics inchMetrics;
-    private static Metrics centimeterMetrics;
-    private double standardConverter;
+    private static final String FEET = "ft";
+    private static final String INCH = "inch";
+    private static final String CM = "cm";
 
-    private Metrics(double standardConverter)    {
+    private static Metrics feetMetrics = new Metrics(FEET_TO_BASE, FEET);
+    private static Metrics inchMetrics = new Metrics(INCH_TO_BASE, INCH);
+    private static Metrics centimeterMetrics = new Metrics(CM_TO_BASE, CM);
+    private double standardConverter;
+    private String unit;
+
+    private Metrics(double standardConverter, String unit)    {
         this.standardConverter = standardConverter;
+        this.unit = unit;
     }
     public static Metrics createFeetMetrics()   {
-        if(feetMetrics == null)
-            feetMetrics = new Metrics(FEET_TO_BASE);
         return feetMetrics;
     }
 
     public static Metrics createInchMetrics()   {
-        if(inchMetrics == null)
-            inchMetrics = new Metrics(INCH_TO_BASE);
         return inchMetrics;
     }
 
     public static Metrics createCentimeterMetrics()   {
-        if(centimeterMetrics == null)
-            centimeterMetrics = new Metrics(CM_TO_BASE);
         return centimeterMetrics;
     }
 
     public double convertToBaseUnits(double value)  {
         return standardConverter * value;
     }
-
 }

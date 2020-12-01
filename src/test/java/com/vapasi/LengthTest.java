@@ -23,54 +23,54 @@ public class LengthTest {
 
     @Test
     public void shouldReturnNotEqualForDifferentPhysicalParameters()    {
-        Length length = new Length(5, feet);
+        Length length = Length.createLengthInFeet(5);
         assertNotEquals(new Integer(5), length);
     }
 
     @Test
     public void shouldBeEqualWhenBothValuesAndUnitsAreSame() {
-        Length length1 = new Length(5, inch);
-        Length length2 = new Length(10, inch);
+        Length length1 = Length.createLengthInInch(5);
+        Length length2 = Length.createLengthInInch(10);
         assertNotEquals(length1, length2);
-        Length length3 = new Length(5, feet);
-        Length length4 = new Length(10, feet);
+        Length length3 = Length.createLengthInFeet(5);
+        Length length4 = Length.createLengthInFeet(10);
         assertNotEquals(length3, length4);
-        Length length5 = new Length(5, cm);
-        Length length6 = new Length(10, cm);
+        Length length5 = Length.createLengthInCM(5);
+        Length length6 = Length.createLengthInCM(10);
         assertNotEquals(length5, length6);
 
     }
 
     @Test
     public void shouldBeEqualForDifferentUnitsWithEquivalentValues() {
-        Length length1 = new Length(5, feet);
-        Length length2 = new Length(60, inch);
+        Length length1 = Length.createLengthInFeet(5);
+        Length length2 = Length.createLengthInInch(60);
         assertEquals(length1, length2);
-        Length length3 = new Length(36, inch);
-        Length length4 = new Length(3, feet);
+        Length length3 = Length.createLengthInInch(36);
+        Length length4 = Length.createLengthInFeet(3);
         assertEquals(length3, length4);
-        Length length5 = new Length(2, inch);
-        Length length6 = new Length(5, cm);
+        Length length5 = Length.createLengthInInch(2);
+        Length length6 = Length.createLengthInCM(5);
         assertEquals(length5, length6);
-        Length length7 = new Length(10, cm);
-        Length length8 = new Length(4, inch);
+        Length length7 = Length.createLengthInCM(10);
+        Length length8 = Length.createLengthInInch(4);
         assertEquals(length7, length8);
 
     }
 
     @Test
     public void shouldNotBeEqualForDifferentUnitsWithDifferentValues() {
-        Length length1 = new Length(5, feet);
-        Length length2 = new Length(65, inch);
+        Length length1 = Length.createLengthInFeet(5);
+        Length length2 = Length.createLengthInInch(65);
         assertNotEquals(length1, length2);
-        Length length3 = new Length(40, inch);
-        Length length4 = new Length(3, feet);
+        Length length3 = Length.createLengthInInch(40);
+        Length length4 = Length.createLengthInFeet(3);
         assertNotEquals(length3, length4);
-        Length length5 = new Length(2, inch);
-        Length length6 = new Length(10, cm);
+        Length length5 = Length.createLengthInInch(2);
+        Length length6 = Length.createLengthInCM(10);
         assertNotEquals(length5, length6);
-        Length length7 = new Length(8, cm);
-        Length length8 = new Length(4, inch);
+        Length length7 = Length.createLengthInCM(8);
+        Length length8 = Length.createLengthInInch(4);
         assertNotEquals(length7, length8);
     }
 
