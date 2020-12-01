@@ -33,8 +33,8 @@ public class Metrics {
         return centimeterMetrics;
     }
 
-    public double standardConverterToBase()  {
-        return standardConverter;
+    public double convertToBaseUnits(double value)  {
+        return standardConverter * value;
     }
 
 }

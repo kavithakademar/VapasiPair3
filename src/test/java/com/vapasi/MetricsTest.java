@@ -12,9 +12,9 @@ public class MetricsTest {
         Metrics inch = Metrics.createInchMetrics();
         Metrics cm = Metrics.createCentimeterMetrics();
 
-        assertEquals(30, feet.standardConverterToBase());
-        assertEquals(2.5, inch.standardConverterToBase());
-        assertEquals(1, cm.standardConverterToBase());
+        assertEquals(60, feet.convertToBaseUnits(2));
+        assertEquals(15, inch.convertToBaseUnits(6));
+        assertEquals(100, cm.convertToBaseUnits(100));
 
 
     }
