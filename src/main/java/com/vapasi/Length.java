@@ -1,14 +1,12 @@
 package com.vapasi;
 
-import java.util.Objects;
-
 public class Length {
 
-    private final double value;
+    private final double length;
     private final Metrics unit;
     
     private Length(double value, Metrics unit)   {
-        this.value = value;
+        this.length = value;
         this.unit = unit;
     }
 
@@ -29,7 +27,10 @@ public class Length {
         if (this == that) return true;
         if (that == null || getClass() != that.getClass()) return false;
         Length length = (Length) that;
-        return unit.convertToBaseUnits(value) == length.unit.convertToBaseUnits(length.value);
+        return unit.convertToBaseUnits(this.length) == length.unit.convertToBaseUnits(length.length);
     }
 
+    public Length addInInch(Length lengthInInch) {
+        return createLengthInInch(length + lengthInInch.length);
+    }
 }

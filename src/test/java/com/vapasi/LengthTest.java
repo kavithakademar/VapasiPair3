@@ -1,6 +1,5 @@
 package com.vapasi;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -74,4 +73,12 @@ public class LengthTest {
         assertNotEquals(length7, length8);
     }
 
+    @Test
+    public void shouldReturnSumOfLengthsWhenTwoUnitsAreSame(){
+        Length length1 = Length.createLengthInInch(3);
+        Length length2 = Length.createLengthInInch(7);
+        Length actualSumOfTwoLengths = length1.addInInch(length2);
+        Length expectedSumOfTwoLengths = Length.createLengthInInch(10);
+        assertEquals(expectedSumOfTwoLengths, actualSumOfTwoLengths);
+    }
 }
