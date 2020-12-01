@@ -35,10 +35,8 @@ public class Length {
     }
 
     public Length add(Length that, Metrics resultantUnit) {
-        double thisInBaseUnits = unit.convertToBaseUnits(this.length);
-        double thatInBaseUnits = that.unit.convertToBaseUnits(that.length);
-        double resultInBaseUnits = thisInBaseUnits + thatInBaseUnits;
-        double resultInResultantUnit = Metrics.convertBaseToResultantUnit(resultInBaseUnits, resultantUnit);
+        double resultInResultantUnit = this.unit.convertToResultantUnit(this.length, resultantUnit)
+                + that.unit.convertToResultantUnit(that.length, resultantUnit);
         return new Length(resultInResultantUnit, resultantUnit);
     }
 }

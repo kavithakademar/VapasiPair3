@@ -1,6 +1,5 @@
 package com.vapasi;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +10,7 @@ public class MetricsTest {
     private static Metrics feet;
     private static Metrics inch;
     private static Metrics cm;
+
     @BeforeEach
     public void setup() {
         feet = Metrics.createFeetMetrics();
@@ -27,15 +27,14 @@ public class MetricsTest {
 
     @Test
     public void shouldReturnBaseUnitToResultantUnit()   {
-        double actualResult = Metrics.convertBaseToResultantUnit(10, inch);
-        assertEquals(4, actualResult);
+        double actualResult = feet.convertToResultantUnit(10, inch);
+        assertEquals(120, actualResult);
 
-        actualResult = Metrics.convertBaseToResultantUnit(10, cm);
-        assertEquals(10, actualResult);
+        actualResult = inch.convertToResultantUnit(10, cm);
+        assertEquals(25, actualResult);
 
-        actualResult = Metrics.convertBaseToResultantUnit(60, feet);
+        actualResult = cm.convertToResultantUnit(60, feet);
         assertEquals(2, actualResult);
-
 
     }
 }
