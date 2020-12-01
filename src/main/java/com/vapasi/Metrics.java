@@ -36,4 +36,8 @@ public class Metrics {
     public double convertToBaseUnits(double value)  {
         return standardConverter * value;
     }
+
+    public static double convertBaseToResultantUnit(double value, Metrics expected)   {
+        return value / expected.standardConverter;
+    }
 }

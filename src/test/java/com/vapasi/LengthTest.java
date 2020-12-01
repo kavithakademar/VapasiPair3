@@ -81,4 +81,13 @@ public class LengthTest {
         Length expectedSumOfTwoLengths = Length.createLengthInInch(10);
         assertEquals(expectedSumOfTwoLengths, actualSumOfTwoLengths);
     }
+
+    @Test
+    public void shouldReturnSumOfLengthsWhenUnitsAreDifferent() {
+        Length length1 = Length.createLengthInInch(3);
+        Length length2 = Length.createLengthInCM(2.5);
+        Length actualSumOfTwoLengths = length1.add(length2,Metrics.createInchMetrics());
+        Length expectedSumOfTwoLengths = Length.createLengthInInch(4);
+        assertEquals(expectedSumOfTwoLengths, actualSumOfTwoLengths);
+    }
 }

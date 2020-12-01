@@ -33,4 +33,12 @@ public class Length {
     public Length addInInch(Length lengthInInch) {
         return createLengthInInch(length + lengthInInch.length);
     }
+
+    public Length add(Length that, Metrics resultantUnit) {
+        double thisInBaseUnits = unit.convertToBaseUnits(this.length);
+        double thatInBaseUnits = that.unit.convertToBaseUnits(that.length);
+        double resultInBaseUnits = thisInBaseUnits + thatInBaseUnits;
+        double resultInResultantUnit = Metrics.convertBaseToResultantUnit(resultInBaseUnits, resultantUnit);
+        return new Length(resultInResultantUnit, resultantUnit);
+    }
 }
